@@ -1,67 +1,94 @@
-
-//linked list (insertion a node)
+//3:04 am
 class LinkedList{
-		Node head;
-		class Node{
-			int data;
-			Node next;
-			Node(int d){
-				data = d;
-				next = null;
-			}
-		}
-		public void push(int data){
-			Node temp = head;
-			head = new Node(data);
-			head.next = temp;
-		}
-		public void insertAfter(int afterNode,int insertNode){
-			Node temp = head;
-			while(temp.next!=null || temp.data!=afterNode){
-				
-				temp = temp.next;
-				
-			}
-			
-			Node newNode = new Node(insertNode);
-			newNode.next = temp.next;
-			temp.next = newNode;
+	
+	Node head;
+	
+	class Node{
+		int data;
+		Node next;
+		Node(int d){
+			data = d;
+			next = null;
 			
 		}
-		public void append(int data){
-			Node temp = head;
-			if(head==null){
-				head = new Node(data);
-				return;
-			}
-			while(temp.next != null){
-				temp = temp.next;
-			}
+	}
+	public void push(int d){
+		
+		if(head == null){
 			
-			Node newNode = new Node(data);
-			temp.next = newNode;
-			newNode.next = null;
+			head = new Node(d);
+			return;
 		}
-		public void show(){
+		
+		Node temp = head;
+		Node new_Node = new Node(d);
+		
+		while(temp.next!=null){
 			
-			Node temp = head;
-			while(temp.next !=null){
-				System.out.println(temp.data);
-				
-				temp=temp.next;
-				
-			}
+			temp = temp.next;
+			
+			
+		}
+		
+		temp.next = new_Node;
+
+		new_Node.next = null;
+		
+	}
+	public void show(){
+		
+		Node temp = head;
+		
+		
+		while(temp.next != null){
+			
 			System.out.println(temp.data);
+			temp= temp.next;
+			
+			
+			
+			
 			
 		}
-		public static void main(String args[]){
-			LinkedList list1= new LinkedList();
-			
-			list1.append(6);
-			list1.append(61);
-			list1.append(12);
-			
-			list1.show();
-			
+		System.out.println(temp.data);
+		
+	}
+	public void deleteNode(int d){
+		Node temp = head;
+		Node temp2=null;
+		while(temp.data != d){
+			temp2 = temp;
+			temp = temp.next;
 		}
+		temp2.next= temp.next;
+		temp = null;
+		
+		
+	}
+	
+	
+	
+	public static void main(String args[]){
+		
+		LinkedList list1 = new LinkedList();
+		LinkedList list2 = new LinkedList();
+		
+		list1.push(2);
+		list1.push(3);
+		list1.push(21);
+		list1.push(7);
+		list1.push(8);
+		
+		list1.deleteNode(3);
+		list2.push(1);
+		list2.push(23);
+		list2.push(2);
+		list2.push(21);
+		list2.push(7);
+		list2.push(8);
+		
+		list1.show();
+		
+	}
+	
 }
