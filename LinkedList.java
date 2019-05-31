@@ -1,4 +1,3 @@
-//3:04 am
 class LinkedList{
 	
 	Node head;
@@ -7,87 +6,79 @@ class LinkedList{
 		int data;
 		Node next;
 		Node(int d){
+			
 			data = d;
 			next = null;
-			
 		}
 	}
-	public void push(int d){
-		
+	
+	 void insertNode(int d){
+		Node temp = head;
 		if(head == null){
 			
 			head = new Node(d);
 			return;
 		}
-		
-		Node temp = head;
 		Node new_Node = new Node(d);
-		
+		while(temp.next!=null){
+			temp = temp.next;
+		}
+		temp.next = new_Node;
+		new_Node.next = null;
+	}
+	void show(){
+		Node temp = head;
+		while(temp.next!=null){
+			System.out.println(temp.data);
+			temp = temp.next;
+		}
+			System.out.println(temp.data);
+	}
+	public void deleteNode(int pos){
+		int k=0;
+		Node temp = head;
+		Node temp1 = temp;
+		if(head == null){
+			return;
+		}
+		if(pos == 0){
+			head = temp.next;
+			temp = null;
+			return;
+		}
 		while(temp.next!=null){
 			
+			if(k == pos){
+				temp1.next = temp.next;
+			
+				temp = null;
+				return;
+			}
+			temp1 = temp;
 			temp = temp.next;
-			
-			
-		}
-		
-		temp.next = new_Node;
-
-		new_Node.next = null;
-		
-	}
-	public void show(){
-		
-		Node temp = head;
-		
-		
-		while(temp.next != null){
-			
-			System.out.println(temp.data);
-			temp= temp.next;
-			
-			
-			
-			
+			k++;
 			
 		}
-		System.out.println(temp.data);
-		
+		if(k == pos){
+				temp1.next = temp.next;
+				temp = null;
+				return;
+			}
 	}
-	public void deleteNode(int d){
-		Node temp = head;
-		Node temp2=null;
-		while(temp.data != d){
-			temp2 = temp;
-			temp = temp.next;
-		}
-		temp2.next= temp.next;
-		temp = null;
-		
-		
-	}
-	
-	
-	
 	public static void main(String args[]){
 		
-		LinkedList list1 = new LinkedList();
-		LinkedList list2 = new LinkedList();
+		LinkedList list = new LinkedList();
 		
-		list1.push(2);
-		list1.push(3);
-		list1.push(21);
-		list1.push(7);
-		list1.push(8);
+		list.insertNode(2);
+		list.insertNode(3);
+		list.insertNode(4);
+		list.insertNode(7);
+		list.insertNode(59);
+		list.insertNode(9);
 		
-		list1.deleteNode(3);
-		list2.push(1);
-		list2.push(23);
-		list2.push(2);
-		list2.push(21);
-		list2.push(7);
-		list2.push(8);
+		list.deleteNode(0);//at given position
 		
-		list1.show();
+		list.show();
 		
 	}
 	
