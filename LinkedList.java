@@ -27,6 +27,9 @@ class LinkedList{
 		new_Node.next = null;
 	}
 	void show(){
+		if(head == null){
+			return;
+		}
 		Node temp = head;
 		while(temp.next!=null){
 			System.out.println(temp.data);
@@ -65,6 +68,11 @@ class LinkedList{
 				return;
 			}
 	}
+	public void deleteList(LinkedList list){
+		
+		head = null;
+		
+	}
 	public static void main(String args[]){
 		
 		LinkedList list = new LinkedList();
@@ -77,7 +85,7 @@ class LinkedList{
 		list.insertNode(9);
 		
 		list.deleteNode(0);//at given position
-		
+		list.deleteList(list);
 		list.show();
 		
 	}
