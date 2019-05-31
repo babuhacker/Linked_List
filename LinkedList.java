@@ -68,25 +68,35 @@ class LinkedList{
 				return;
 			}
 	}
-	public void deleteList(LinkedList list){
+	public void deleteList(){
 		
 		head = null;
+	}
+	public void lengthList(){
+		Node temp = head;
+		int k=0;
+		while(temp!=null){
+			temp = temp.next;
+			k++;
+		}
+		System.out.println("Length of list "+k);
 		
 	}
 	public static void main(String args[]){
 		
-		LinkedList list = new LinkedList();
-		
-		list.insertNode(2);
-		list.insertNode(3);
-		list.insertNode(4);
-		list.insertNode(7);
-		list.insertNode(59);
-		list.insertNode(9);
-		
-		list.deleteNode(0);//at given position
-		list.deleteList(list);
-		list.show();
+		LinkedList list1 = new LinkedList();
+			LinkedList list2 = new LinkedList();
+		list1.insertNode(2);
+		list1.insertNode(3);
+		list1.insertNode(4);
+		list2.insertNode(7);
+		list2.insertNode(59);
+		list2.insertNode(9);
+		list1.deleteNode(0);		//at given position
+		list1.lengthList();
+
+		list2.deleteList();
+		list2.show();
 		
 	}
 	
